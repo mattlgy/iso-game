@@ -1,0 +1,25 @@
+{
+  "name": "iso-game",
+  "version": "0.0.0",
+  "description": "iso game thing",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify ./src/index.js -o ./game.js -v",
+    "watch": "watchify ./src/index.js -o ./game.js -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mattliegey/iso-game.git"
+  },
+  "author": "Matt Liegey <mtliegey@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattliegey/iso-game/issues"
+  },
+  "homepage": "https://github.com/mattliegey/iso-game#readme",
+  "dependencies": {
+    "mathjs": "^1.7.0",
+    "pixi.js": "^3.0.6"
+  }
+}

@@ -1,0 +1,21 @@
+{"frames": {
+
+"grass_tile.png": {
+	"frame": {"x":147,"y":73,"w":64,"h":37},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":37},
+	"sourceSize": {"w":64,"h":37}
+}
+
+},
+"meta": {
+    "app": "http://www.texturepacker.com",
+    "version": "1.0",
+		"image": "tilesetmelkas.png",
+		"format": "RGBA8888",
+		"size": {"w":411,"h":234},
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:2f213a6b451f9f5719773418dfe80ae8$"
+}
+}
