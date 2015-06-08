@@ -1,21 +1,30 @@
 var PIXI = require('pixi.js')
 var math = require('mathjs')
+var astar = require('./lib/astar')
 
 var TILE_WIDTH = 64
 var TILE_HEIGHT = 32
 var OFFSET_X = 200
 var OFFSET_Y = 200
 
+// function coordsToPos (x, y) {
+//   return {
+//     x: 200 + (x * 32 - y * 32),
+//     y: 200 + (x * 16 + y * 16)
+//   }
+// }
+
 function coordsToPos (x, y) {
+  var r = m1.multiply([x ,y, 1]).toArray()
   return {
-    x: 200 + (x * 32 - y * 32),
-    y: 200 + (x * 16 + y * 16)
+    x: r[0],
+    y: r[1]
   }
 }
 
 var m1 = math.matrix([
-  [64, -64, 200],
-  [32, 32, 200],
+  [TILE_WIDTH / 2, -TILE_WIDTH / 2, OFFSET_X],
+  [TILE_HEIGHT / 2, TILE_HEIGHT / 2, OFFSET_Y],
   [0, 0, 1]
 ])
 window.m1 = m1
@@ -37,66 +46,63 @@ PIXI.loader
     .add('/assets/tiles.json')
     .load(onAssetsLoaded);
 
-var bunny
+var map = [
+  [1, 0, 0, 1, 1],
+  [1, 0, 0, 0, 1],
+  [1, 0, 1, 0, 1],
+  [1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1],
+]
+window.map = map
+window.astar = astar
 
-function onAssetsLoaded()
-{
-  // create a texture from an image path
+function onAssetsLoaded () {
   var grassTileTexture = PIXI.Texture.fromFrame('grass_tile.png')
 
   var x = 0
   var y = 0
   var s
-  while (x <= 5) {
-    while (y <= 5) {
-      s = new PIXI.Sprite(grassTileTexture)
-      // s.position.x
-      // s.position.y
-      s.position = coordsToPos(x, y)
-      stage.addChild(s)
-      y++
+
+  while (x < map.length) {
+    while (y < map[0].length) {
+      if (map[y][x]) {
+        s = new PIXI.Sprite(grassTileTexture)
+        s.position = coordsToPos(x, y)
+        stage.addChild(s)
+      }
+      y = y + 1
     }
     y = 0
-    x++
+    x = x + 1
   }
 
-  // // create a new Sprite using the texture
-  // var d = new PIXI.Sprite(texture);
-  // // move the sprite to the center of the screen
-  // d.position.x = 132;
-  // d.position.y = 84;
-  // stage.addChild(d);
-  //
-  // // create a new Sprite using the texture
-  // var a = new PIXI.Sprite(texture);
-  // // move the sprite to the center of the screen
-  // a.position.x = 100;
-  // a.position.y = 100;
-  // stage.addChild(a);
-  //
-  // // create a new Sprite using the texture
-  // var b = new PIXI.Sprite(texture);
-  // // move the sprite to the center of the screen
-  // b.position.x = 164;
-  // b.position.y = 100;
-  // stage.addChild(b);
-  //
-  // // create a new Sprite using the texture
-  // var c = new PIXI.Sprite(texture);
-  // // move the sprite to the center of the screen
-  // c.position.x = 132;
-  // c.position.y = 116;
-  // stage.addChild(c);
-
-  animate();
+  animate()
 }
 
+// function onAssetsLoaded () {
+//   // create a texture from an image path
+//   var grassTileTexture = PIXI.Texture.fromFrame('grass_tile.png')
+//
+//   var x = 0
+//   var y = 0
+//   var s
+//   while (x <= 5) {
+//     while (y <= 5) {
+//       s = new PIXI.Sprite(grassTileTexture)
+//       // s.position.x
+//       // s.position.y
+//       s.position = coordsToPos(x, y)
+//       stage.addChild(s)
+//       y++
+//     }
+//     y = 0
+//     x++
+//   }
+//
+//   animate()
+// }
+
 function animate() {
-  requestAnimationFrame(animate);
-
-  // just for fun, let's rotate mr rabbit a little
-  // bunny.rotation += 0.1;
-
-  // render the container
-  renderer.render(stage);
+  requestAnimationFrame(animate)
+  renderer.render(stage)
 }
