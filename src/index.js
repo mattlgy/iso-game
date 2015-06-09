@@ -1,4 +1,5 @@
 var PIXI = require('pixi.js')
+require('./lib/vector')
 var astar = require('./lib/astar')
 var Map = require('./map')
 var Actor = require('./actor')
