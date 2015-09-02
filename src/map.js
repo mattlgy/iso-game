@@ -1,6 +1,7 @@
 var PIXI = require('pixi.js')
-var helpers = require('./lib/helpers')
+// var helpers = require('./lib/helpers')
 var astar = require('./lib/astar')
+var Game = require('./game')
 
 class Map {
   constructor(data) {
@@ -20,7 +21,7 @@ class Map {
       while (y < this.data[0].length) {
         if (this.data[x][y]) {
           s = new PIXI.Sprite(grassTileTexture)
-          s.position = helpers.toPos({ x, y })
+          s.position = Game.toScreenPos({ x, y })
           this.container.addChild(s)
         }
         y = y + 1

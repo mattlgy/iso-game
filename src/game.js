@@ -1,7 +1,7 @@
 var PIXI = require('pixi.js')
 var astar = require('./lib/astar')
 var Map = require('./map')
-var Actor = require('./actor')
+// var Actor = require('./actor')
 var math = require('mathjs')
 var config = require('./config')
 
@@ -10,15 +10,15 @@ var m1 = math.matrix([
   [config.TILE_HEIGHT / 2, config.TILE_HEIGHT / 2, config.OFFSET_Y],
   [0, 0, 1]
 ])
-window.m1 = m1
+// window.m1 = m1
 
 var m2 = math.matrix([
   [config.TILE_HEIGHT, config.TILE_WIDTH, -config.OFFSET_X * config.TILE_HEIGHT - config.OFFSET_Y * config.TILE_WIDTH],
   [-config.TILE_HEIGHT, config.TILE_WIDTH, config.OFFSET_X * config.TILE_HEIGHT - config.OFFSET_Y * config.TILE_WIDTH],
   [0, 0, 2 * config.TILE_WIDTH * config.TILE_HEIGHT]
 ]).multiply(1 / (2 * config.TILE_WIDTH * config.TILE_HEIGHT))
-window.m2 = m2
-
+// window.m2 = m2
+console.log('pants');
 class Game {
   constructor ({ map, renderer }) {
     this.renderer = renderer

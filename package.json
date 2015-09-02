@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/mattliegey/iso-game#readme",
   "dependencies": {
-    "mathjs": "^1.7.0",
-    "pixi.js": "^3.0.6"
   },
   "devDependencies": {
-    "babelify": "^6.1.2"
+    "mathjs": "^1.7.0",
+    "pixi.js": "^3.0.6",
+    "babelify": "^6.3.0"
   }
 }

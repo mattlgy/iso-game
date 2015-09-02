@@ -2,8 +2,8 @@ var PIXI = require('pixi.js')
 require('./lib/vector')
 var astar = require('./lib/astar')
 var Map = require('./map')
-var Actor = require('./actor')
 var Game = require('./game')
+var Actor = require('./actor')
 
 var renderer = PIXI.autoDetectRenderer(800, 600);
 document.body.appendChild(renderer.view);

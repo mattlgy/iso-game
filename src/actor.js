@@ -1,6 +1,7 @@
 var PIXI = require('pixi.js')
 var Game = require('./game')
 var astar = require('./lib/astar')
+// window.Game = Game
 
 class Actor {
   constructor ({ map, x, y, pos, dir, speed }) {
@@ -28,8 +29,7 @@ class Actor {
   }
 
   tick (d) {
-    // this.step(d)
-
+    this.step(d)
   }
 }
 
