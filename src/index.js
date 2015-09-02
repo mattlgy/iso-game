@@ -32,10 +32,9 @@ function onAssetsLoaded () {
     map
   })
 
-  var actor = new Actor({
-    game
-  })
-  actor.render()
+  var actor = new Actor({})
+  // actor.render()
+  game.addActor(actor)
 
   game.start()
 }
